@@ -123,3 +123,31 @@
     - *Other conditions should probably be handled somehow!*
   - Call `renderer.update`
   - Call back to loop on next animation frame
+- *Defining game object classes should probably be deferred to separate files,
+  see previous notes on what those might look like.*
+
+### Physics.js
+
+- Define constants
+  - Gravitational constant
+  - Position scale (pixels to meters)
+  - Velocity scale (pixels/second to meters/second)
+  - Time scale
+- Define gravitation `function`
+  - For each game object (1)
+    - For each other game object (2) add calculated gravitational acceleration 
+      multiplied by the time scale to the object (1)'s velocity
+- Define move objects `function`
+  - For each game object update position based on velocity and time scale
+- Define check collisions `function`
+  - For each game object (1)
+    - For each other game object (2)
+      - If hitboxes intersect, log other object (2) to object (1)'s collisions
+- Define physics loop
+  - Call gravity
+  - Call move
+  - Call check collisions
+  - Call back to loop after timeout <br/>
+    *Timeout will probably be set to 1/60th second, this is probably pretty
+    similar to the animation framerate but if this is dependent on that the time 
+    scales get weird for some reason (I've tested it before).*
