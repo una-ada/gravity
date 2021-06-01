@@ -5,21 +5,23 @@
  */
 
 /** @module GameData - Manages the game model. */
-export default
-  /** Manages the game model. */
-  class GameData {
-    /** Initialize a game model. */
-    constructor(){
-      
-      /** @var {Object} mouse - Data regarding the user's mouse */
-      this.mouse = {
-        /** @var {boolean} mouse.isDown - Is mouse currently down */
-        isDown: false,
-        /** @var {number[]} mouse.initialPosition - Position of mouse on down */
-        initialPosition: [0, 0],
-        /** @var {number[]} mouse.position - Current position of mouse */
-        position: [0, 0]
-      }
-
-    }
+export default class GameData {
+  /** Initialize a game model. */
+  constructor() {
+    /** @var {Object} mouse - Data regarding the user's mouse */
+    this.mouse = {
+      /** @var {boolean} mouse.isDown - Is mouse currently down */
+      isDown: false,
+      /** @var {Object} mouse.initPosition - Position of mouse on down */
+      initPosition: {
+        x: 0,
+        y: 0,
+      },
+      /** @var {Object} mouse.position - Current position of mouse */
+      position: {
+        x: 0,
+        y: 0,
+      },
+    };
   }
+}

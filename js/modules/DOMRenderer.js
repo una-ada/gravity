@@ -1,16 +1,13 @@
 /**
- * Rendering module using the DOM
- * @module modules/DOMRenderer
+ * @file    Manages the game view (DOM).
+ * @author  Una Ada <una@anarchy.website>
+ * @version 2021.06.01
  */
-export default
-  /**
-   * Class for rendering views
-   */
-  class DOMRenderer {
-    /**
-     * Initialize a DOM-based renderer
-     */
-    constructor(){
-      console.log("DOMRenderer works!")
-    }
+
+/** @module DOMRenderer - Manages the game view (DOM). */
+export default class DOMRenderer {
+  /** Initialize a DOM-based renderer */
+  constructor() {
+    console.log("DOMRenderer works!");
   }
+}
