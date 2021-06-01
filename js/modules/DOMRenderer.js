@@ -7,6 +7,9 @@ export default
    * Class for rendering views
    */
   class DOMRenderer {
+    /**
+     * Initialize a DOM-based renderer
+     */
     constructor(){
       console.log("DOMRenderer works!")
     }
