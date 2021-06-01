@@ -9,3 +9,5 @@ const
   renderer = new DOMRenderer(),
   phys = new Physics(state),
   game = new Game(state);
+
+  Physics.scale.time
