@@ -11,11 +11,11 @@ export default
       console.log("Game works!")
     }
 
-    /** @constant {Object} scale - Default scales for input */
+    /** @const {Object} scale - Default scales for input */
     static scale = {
-      /** @constant {number} scale.mass - Mass multiplier per 100ms */
+      /** @const {number} scale.mass - Mass multiplier per 100ms */
       mass: 1.05,
-      /** @constant {number} scale.velocity - Velocity input (m/s per pixel) */
+      /** @const {number} scale.velocity - Velocity input (m/s per pixel) */
       velocity: 55.7
     };
 

@@ -11,14 +11,14 @@ export default
       console.log("Physics works!")
     }
 
-    /** @constant {number} G - Gravitational constant */
+    /** @const {number} G - Gravitational constant */
     static G = 6.67e-11;
 
-    /** @constant {Object} scale - Conversion rates for physics equations */
+    /** @const {Object} scale - Conversion rates for physics equations */
     static scale = {
-      /** @constant {number} scale.space - Space scale (meters per pixel) */
+      /** @const {number} scale.space - Space scale (meters per pixel) */
       space: 0.30e7,
-      /** @constant {number} scale.time - Time scale (seconds per frame) */
+      /** @const {number} scale.time - Time scale (seconds per frame) */
       time: 0.50e3
     };
 
