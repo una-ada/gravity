@@ -10,4 +10,6 @@ const
   phys = new Physics(model),
   game = new Game(model);
 
-document.addEventListener("mousedown", game.handleMouseDown);
+document.addEventListener("mousedown", game.handleMouseDown.bind(game));
+document.addEventListener("mouseup",   game.handleMouseUp.bind(game));
+document.addEventListener("mousemove", game.handleMouseMove.bind(game));

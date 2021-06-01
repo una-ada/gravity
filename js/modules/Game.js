@@ -28,10 +28,35 @@ export default
       velocity: 55.7
     }
 
-    /*----- Event Listeners --------------------------------------------------*/
-    
+    /*----- Event Handlers ---------------------------------------------------*/
+    /**
+     * Handle mouse down events
+     * @param {MouseEvent} e - Mouse down event
+     */
     handleMouseDown(e){
-      console.log("BOOP!", e);
+      // Show mouse is down in model
+      this.model.mouse.isDown = true;
+      // Cache initial mouse position
+      this.model.mouse.initialPosition = [e.pageX, e.pageY];
+      // Save current mouse position
+      this.model.mouse.position = [e.pageX, e.pageY];
     }
-
+    /**
+     * Handle mouse up events
+     * @param {MouseEvent} e - Mouse up event
+     */
+    handleMouseUp(e){
+      // Show mouse is up in model
+      this.model.mouse.isDown = false;
+      // TEST! Log all the mouse data
+      console.log(this.model.mouse);
+    }
+    /**
+     * Handle mouse move events
+     * @param {MouseEvent} e - Mouse move event
+     */
+    handleMouseMove(e){
+      // Save current mouse position
+      this.model.mouse.position = [e.pageX, e.pageY];
+    }
   }
