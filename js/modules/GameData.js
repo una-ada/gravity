@@ -1,27 +1,24 @@
 /**
- * @file    Manages the game state/model.
+ * @file    Manages the game model.
  * @author  Una Ada <una@anarchy.website>
  * @version 2021.06.01
  */
 
-/**
- * Rendering module using the DOM
- * @module modules/GameData
- */
+/** @module GameData - Manages the game model. */
 export default
-  /** The game state (model) */
+  /** Manages the game model. */
   class GameData {
-    /** Create object to hold game states */
+    /** Initialize a game model. */
     constructor(){
       
       /** @var {Object} mouse - Data regarding the user's mouse */
       this.mouse = {
         /** @var {boolean} mouse.isDown - Is mouse currently down */
-        isDown = false,
+        isDown: false,
         /** @var {number[]} mouse.initialPosition - Position of mouse on down */
-        initialPosition = [0, 0],
+        initialPosition: [0, 0],
         /** @var {number[]} mouse.position - Current position of mouse */
-        position = [0, 0]
+        position: [0, 0]
       }
 
     }

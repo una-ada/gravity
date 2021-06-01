@@ -5,9 +5,9 @@ import Physics from "./modules/Physics.js";
 import GameData from "./modules/GameData.js";
 
 const
-  state = new GameData(),
+  model = new GameData(),
   renderer = new DOMRenderer(),
-  phys = new Physics(state),
-  game = new Game(state);
+  phys = new Physics(model),
+  game = new Game(model);
 
-  Physics.scale.time
+document.addEventListener("mousedown", game.handleMouseDown);
