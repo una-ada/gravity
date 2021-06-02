@@ -5,7 +5,7 @@
  */
 
 /** @module Physics - Manages the physics simulation. */
-export default class Physics {
+export default class {
   /** Initialize physics engine. */
   constructor() {
     console.log("Physics works!");

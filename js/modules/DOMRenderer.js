@@ -4,10 +4,13 @@
  * @version 2021.06.01
  */
 
+/*----- Imports --------------------------------------------------------------*/
+import Renderer from "./Renderer.js";
+
 /** @module DOMRenderer - Manages the game view (DOM). */
-export default class DOMRenderer {
+export default class extends Renderer {
   /** Initialize a DOM-based renderer */
   constructor() {
-    console.log("DOMRenderer works!");
+    super();
   }
 }

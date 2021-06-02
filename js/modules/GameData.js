@@ -5,7 +5,7 @@
  */
 
 /** @module GameData - Manages the game model. */
-export default class GameData {
+export default class {
   /** Initialize a game model. */
   constructor() {
     /** @var {Object} mouse - Data regarding the user's mouse */

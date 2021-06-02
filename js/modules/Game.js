@@ -4,6 +4,7 @@
  * @version 2021.06.01
  */
 
+/*----- Imports --------------------------------------------------------------*/
 import GameData from "./GameData.js";
 
 /** @module Game - Manages the game controller. */
@@ -37,6 +38,7 @@ export default class Game {
     mouse.isDown = true;
     [mouse.initPosition.x, mouse.initPosition.y] = [e.pageX, e.pageY];
     [mouse.position.x, mouse.position.y] = [e.pageX, e.pageY];
+    console.log(e);
   }
   /**
    * Handle mouse up events
