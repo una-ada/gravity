@@ -27,4 +27,9 @@ export default class {
     /** @var {HTMLElement} container - DOM Element holding all game views. */
     this.container = el;
   }
+  /** @type {number[]} */
+  get bounds() {
+    const { top, left, height, width } = this.container.getBoundingClientRect();
+    return { top, left, height, width };
+  }
 }
