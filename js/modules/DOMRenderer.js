@@ -12,5 +12,8 @@ export default class extends Renderer {
   /** Initialize a DOM-based renderer */
   constructor() {
     super();
+
+    /** @var {HTMLElement} container - DOM Element holding all game views.*/
+    this.container = document.createElement("div");
   }
 }

@@ -11,9 +11,10 @@ import Physics from "./modules/Physics.js";
 import GameData from "./modules/GameData.js";
 
 const model = new GameData(),
-  renderer = new DOMRenderer(model),
-  phys = new Physics(model),
-  game = new Game(model);
+  view = new DOMRenderer(model),
+  physics = new Physics(model),
+  game = new Game(model, view);
+document.body.append(view.container);
 
 /*----- Event Listeners ------------------------------------------------------*/
 document.addEventListener("mousedown", game.handleMouseDown.bind(game));

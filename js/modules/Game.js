@@ -6,16 +6,20 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import GameData from "./GameData.js";
+import Renderer from "./Renderer.js";
 
 /** @module Game - Manages the game controller. */
 export default class Game {
   /**
    * Initialize a game controller.
    * @param {GameData} model - A game model instance.
+   * @param {Renderer} view - A game view instance.
    */
-  constructor(model) {
+  constructor(model, view) {
     /** @var {GameData} model - Reference to the game's model */
     this.model = model;
+    /** @var {Renderer} view - Reference to the game's view */
+    this.view = view;
   }
 
   /*----- Constants ----------------------------------------------------------*/
