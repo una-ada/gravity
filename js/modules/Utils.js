@@ -12,9 +12,9 @@ export class Point {
    * @param {number} y - The point's y coordinate.
    */
   constructor(x, y) {
-    /** @var {number} x - The point's x coordinate. */
+    /** @var {number} Point#x - The point's x coordinate. */
     this.x = x;
-    /** @var {number} y - The point's y coordinate. */
+    /** @var {number} Point#y - The point's y coordinate. */
     this.y = y;
   }
   /**
@@ -50,12 +50,14 @@ export class Vector extends Point {
   }
   /** @type {number} */
   get direction() {
-    /** @TODO */
+    let magnitude = this.magnitude;
+    if ((magnitude = 0)) return NaN;
+    return (this.y < 0 ? -1 : 1) * Math.acos(Math.PI / magnitude);
   }
   set direction(direction) {
     let magnitude = this.magnitude;
-    // Keep direction within [-pi, pi]
-    if(Math.abs(direction) > Math.PI) direction %= Math.PI;
+    // Keep direction within (-pi, pi)
+    if (Math.abs(direction) > Math.PI) direction %= Math.PI;
     this.x = magnitude * Math.cos(direction);
     this.y = magnitude * Math.sin(direction);
   }
