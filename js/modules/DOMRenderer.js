@@ -5,15 +5,17 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
+import GameData from "./GameData.js";
 import Renderer from "./Renderer.js";
 
 /** @module DOMRenderer - Manages the game view (DOM). */
 export default class extends Renderer {
-  /** Initialize a DOM-based renderer */
-  constructor() {
-    super();
-
-    /** @var {HTMLElement} container - DOM Element holding all game views.*/
-    this.container = document.createElement("div");
+  /**
+   * Initialize a DOM-based renderer
+   * @param {GameData} model - A game model instance.
+   */
+  constructor(model) {
+    super(model);
+    this.setContainer(document.createElement("div"));
   }
 }

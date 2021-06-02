@@ -8,6 +8,8 @@
 export default class {
   /** Initialize a game model. */
   constructor() {
+    /** @var {string} id - Short game ID based on the current time */
+    this.id = Math.round(+new Date() / 1e3).toString(26);
     /** @var {Object} mouse - Data regarding the user's mouse */
     this.mouse = {
       /** @var {boolean} mouse.isDown - Is mouse currently down */
