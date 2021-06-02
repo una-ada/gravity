@@ -11,7 +11,7 @@ import Renderer from "./Renderer.js";
 /** @module DOMRenderer - Manages the game view (DOM). */
 export default class extends Renderer {
   /**
-   * Initialize a DOM-based renderer
+   * Initialize a DOM-based renderer.
    * @param {GameData} model - A game model instance.
    */
   constructor(model) {

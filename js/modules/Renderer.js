@@ -14,16 +14,17 @@ export default class {
    * @param {GameData} model - A game model instance.
    */
   constructor(model) {
-    /** @var {GameData} model - Reference to the game's model */
+    /** @var {GameData} model - Reference to the game's model. */
     this.model = model;
   }
   /**
    * Sets the view container
-   * @param {HTMLElement} el - Element to set as view container
+   * @param {HTMLElement} el - Element to set as view container.
    */
   setContainer(el) {
     el.id = `gravity-${this.model.id}`;
-    /** @var {HTMLElement} container - DOM Element holding all game views.*/
+    el.classList.add("gravity");
+    /** @var {HTMLElement} container - DOM Element holding all game views. */
     this.container = el;
   }
 }
