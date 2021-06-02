@@ -17,6 +17,15 @@ export class Point {
     /** @var {number} y - The point's y coordinate. */
     this.y = y;
   }
+  /**
+   * Update coordinates.
+   * @param {number} x - New x coordinate.
+   * @param {number} y - New y coordinate.
+   */
+  update(x, y) {
+    this.x = x;
+    this.y = y;
+  }
 }
 /** A 2-dimensional vector in cartesian coordinated. */
 export class Vector extends Point {

@@ -39,9 +39,8 @@ export default class Game {
   handleMouseDown(e) {
     let mouse = this.model.mouse;
     mouse.isDown = true;
-    [mouse.initPosition.x, mouse.initPosition.y] = [e.pageX, e.pageY];
-    [mouse.position.x, mouse.position.y] = [e.pageX, e.pageY];
-    console.log(e);
+    mouse.initPosition.update(e.pageX, e.pageY);
+    mouse.position.update(e.pageX, e.pageY);
   }
   /**
    * Handle mouse up events
@@ -50,14 +49,13 @@ export default class Game {
   handleMouseUp(e) {
     let mouse = this.model.mouse;
     mouse.isDown = false;
-    [mouse.position.x, mouse.position.y] = [e.pageX, e.pageY];
+    mouse.position.update(e.pageX, e.pageY);
   }
   /**
    * Handle mouse move events
    * @param {MouseEvent} e - Mouse move event
    */
   handleMouseMove(e) {
-    let mouse = this.model.mouse;
-    [mouse.position.x, mouse.position.y] = [e.pageX, e.pageY];
+    this.model.mouse.position.update(e.pageX, e.pageY);
   }
 }
