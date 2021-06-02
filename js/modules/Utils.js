@@ -52,7 +52,7 @@ export class Vector extends Point {
   get direction() {
     let magnitude = this.magnitude;
     if (magnitude == 0) return NaN;
-    return (this.y < 0 ? -1 : 1) * Math.acos(Math.PI / magnitude);
+    return (this.y < 0 ? -1 : 1) * Math.acos(this.x / magnitude);
   }
   set direction(direction) {
     let magnitude = this.magnitude;
