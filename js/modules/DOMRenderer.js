@@ -24,12 +24,15 @@ export default class DOMRenderer extends Renderer {
   /** Render the game scene. */
   render() {
     const scene = this.model.scene;
-    // Make sure each Celestial has an Element
-    scene.forEach((obj) => obj.element || this.generateElement(obj));
+    scene.forEach((obj) => {
+      // Make sure each Celestial has an Element
+      const elem = obj.element || this.generateElement(obj);
+    });
   }
   /**
    * Create a rendering Element for a Celestial and append it to the container.
    * @arg {Celestial} celestial
+   * @returns {HTMLElement} The rendering Element for the Celestial.
    */
   generateElement(celestial) {
     const element = document.createElement("celestial"),
@@ -38,5 +41,6 @@ export default class DOMRenderer extends Renderer {
     element.classList.add(`gravity__celestial_${cleanName}`);
     celestial.element = element;
     this.container.append(celestial.element);
+    return element;
   }
 }
