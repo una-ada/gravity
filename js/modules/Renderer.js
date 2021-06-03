@@ -8,15 +8,17 @@
 import GameData from "./GameData.js";
 
 /*----- Classes --------------------------------------------------------------*/
-/** @module Renderer - Superclass for managing game view. */
+/** @module Renderer Superclass for managing game view. */
 export default class Renderer {
   /**
    * Initialize base rendering functions.
-   * @arg {GameData} model - A game model instance.
+   * @arg {GameData} model A game model instance.
    */
   constructor(model) {
-    /** @var {GameData} model - Reference to the game's model. */
+    /** @var {GameData} model Reference to the game's model. */
     this.model = model;
+    /** @var {boolean} running Should the renderer continue running? */
+    this.running = true;
   }
 
   /*---- Setters and getters -------------------------------------------------*/
@@ -29,12 +31,12 @@ export default class Renderer {
   /*----- Methods ------------------------------------------------------------*/
   /**
    * Sets the view container
-   * @arg {HTMLElement} el - Element to set as view container.
+   * @arg {HTMLElement} el Element to set as view container.
    */
   setContainer(el) {
     el.id = `gravity-${this.model.id}`;
     el.classList.add("gravity");
-    /** @var {HTMLElement} container - DOM Element holding all game views. */
+    /** @var {HTMLElement} container DOM Element holding all game views. */
     this.container = el;
   }
   /**
@@ -43,5 +45,10 @@ export default class Renderer {
    */
   render() {
     throw new Error("Renderer#render() must be implemented by subclass!");
+  }
+  /** Render on animationFrame */
+  loop() {
+    if (this.running) this.render();
+    requestAnimationFrame(this.loop);
   }
 }
