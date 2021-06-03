@@ -18,6 +18,17 @@ export class Point {
     /** @var {number} Point#y - The point's y coordinate. */
     this.y = y;
   }
+
+
+
+  /*----- Methods ------------------------------------------------------------*/
+  /**
+   * Create a point of the point.
+   * @returns {Point} A copy of the point.
+   */
+   copy() {
+    return new Point(this.x, this.y);
+  }
   /**
    * Update coordinates.
    * @arg {number} x - New x coordinate.
@@ -61,5 +72,14 @@ export class Vector extends Point {
     if (Math.abs(direction) > Math.PI) direction %= Math.PI;
     this.x = magnitude * Math.cos(direction);
     this.y = magnitude * Math.sin(direction);
+  }
+
+  /*----- Methods ------------------------------------------------------------*/
+  /**
+   * Create a copy of the vector.
+   * @returns {Vector} A copy of the vector.
+   */
+  copy() {
+    return new Vector(this.x, this.y);
   }
 }
