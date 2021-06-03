@@ -19,14 +19,7 @@ export class Point {
     this.y = y;
   }
 
-  /*----- Methods ------------------------------------------------------------*/
-  /**
-   * Create a point of the point.
-   * @returns {Point} A copy of the point.
-   */
-   copy() {
-    return new Point(this.x, this.y);
-  }
+  /*--- Functions ------------------------------------------------------------*/
   /**
    * Update coordinates.
    * @arg {number} x - New x coordinate.
@@ -47,6 +40,25 @@ export class Point {
     this.x += point.x;
     this.y += point.y;
     return this;
+  }
+  /**
+   * Multiply point components by a scalar
+   * @arg {number} scalar Multiplication scale
+   * @returns {Point} The updated point.
+   */
+  scale(scalar) {
+    this.x *= scalar;
+    this.y *= scalar;
+    return this;
+  }
+
+  /*----- Methods ------------------------------------------------------------*/
+  /**
+   * Create a point of the point.
+   * @returns {Point} A copy of the point.
+   */
+  copy() {
+    return new Point(this.x, this.y);
   }
 }
 /** A 2-dimensional vector in cartesian coordinated. */
@@ -94,9 +106,10 @@ export class Vector extends Point {
     return new Vector(this.x, this.y);
   }
   /**
-   * Multiply the vector components by a scalar.
+   * Multiply the vector magnitude by a scalar.
    * @arg {number} scalar The scalar to multiply the components by.
    * @returns {Vector} The updated vector.
+   * @override
    */
   scale(scalar) {
     this.magnitude = this.magnitude * scalar;
