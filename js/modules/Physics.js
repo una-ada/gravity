@@ -6,6 +6,7 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import GameData from "./GameData.js";
+import Celestial from "./Celestial.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module Physics Manages the physics simulation. */
@@ -24,15 +25,18 @@ export default class Physics {
   /*----- Constants ----------------------------------------------------------*/
   /** @const {number} G Gravitational constant. */
   static G = 6.67e-11;
-  /** @const {Object} scale Conversion rates for physics equations. */
-  static scale = {
-    /** @const {number} scale.space Space scale (meters per pixel). */
-    space: 0.3e7,
-    /** @const {number} scale.time Time scale (seconds per frame). */
-    time: 0.5e3,
-  };
+  /** @const {number} timeScale Time scale (seconds per loop). */
+  static timeScale = 0.5e3;
   /** @const {number} interval Interval time for physics loop. */
   static interval = 1e3 / 120;
+
+  /*----- Calculation Methods ------------------------------------------------*/
+  updatePositions() {
+    this.model.scene.forEach(
+      /** @arg obj {Celestial} */
+      (obj) => obj.position.add(obj.velocity.copy().scale(Physics.timeScale))
+    );
+  }
 
   /*----- Running Methods ----------------------------------------------------*/
   /** Calculate physics on a set interval. */
@@ -48,5 +52,7 @@ export default class Physics {
     window.clearInterval(this._intervalId);
   }
   /** Calculate the physics for objects in the scene and apply to model. */
-  step() {}
+  step() {
+    this.updatePositions();
+  }
 }
