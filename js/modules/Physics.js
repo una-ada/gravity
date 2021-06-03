@@ -7,6 +7,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import GameData from "./GameData.js";
 import Celestial from "./Celestial.js";
+import { Vector } from "./Utils.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module Physics Manages the physics simulation. */
@@ -48,10 +49,35 @@ export default class Physics {
     // Vector between m_1 and m_2
     const between = m_1.position.vectorTo(m_2.position),
       // Distance between m_1 and m_2
-      r = between.magnitude;
+      r = between.copy().magnitude;
     // Make `between` a unit vector
     between.magnitude = 1;
     return between.scale((Physics.G * m_2.mass) / r ** 2);
+  }
+  /** Update `Celestial#velocity`s based on gravitational acceleration */
+  updateVelocities() {
+    this.model.scene.forEach(
+      /** @arg m_1 {Celestial} */
+      (m_1) =>
+        // Add to the velocity
+        m_1.velocity.add(
+          this.model.scene
+            // Total acceleration
+            .reduce(
+              /**
+               * @arg {Vector} acc Total acceleration (accumulator)
+               * @arg {Celestial} m_2 Celestial applying acceleration
+               */
+              (acc, m_2) =>
+                // Add gravitational acceleration if not same celestial
+                m_1 === m_2 ? acc : acc.add(this.gravitate(m_1, m_2)),
+              // Initialize an zero acceleration vector
+              new Vector(0, 0)
+            )
+            // Velocity from acceleration
+            .scale(Physics.timeScale)
+        )
+    );
   }
 
   /*----- Running Methods ----------------------------------------------------*/
@@ -69,6 +95,7 @@ export default class Physics {
   }
   /** Calculate the physics for objects in the scene and apply to model. */
   step() {
+    this.updateVelocities();
     this.updatePositions();
   }
 }
