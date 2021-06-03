@@ -6,6 +6,8 @@
 
 /*----- Imports --------------------------------------------------------------*/
 import GameData from "./GameData.js";
+import Celestial from "./Celestial.js";
+import { Point } from "./Utils.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module Renderer Superclass for managing game view. */
@@ -19,6 +21,8 @@ export default class Renderer {
     this.model = model;
     /** @var {boolean} running Should the renderer continue running? */
     this.running = true;
+    /** @var {number} scale Space scale (meters per pixel). */
+    this.scale = 0.3e7;
   }
 
   /*---- Setters and getters -------------------------------------------------*/
@@ -26,6 +30,27 @@ export default class Renderer {
   get bounds() {
     const { top, left, height, width } = this.container.getBoundingClientRect();
     return { top, left, height, width };
+  }
+
+  /*----- Functions ----------------------------------------------------------*/
+  /**
+   * Get the appropriate view position for a Celestial instance.
+   * @param {Celestial} celestial
+   * @returns {Point} View position for the Celestial.
+   */
+  getPosition(celestial) {
+    const bounds = this.bounds,
+      // View origin point (0, 0)
+      origin = new Point(
+        bounds.width / 2,
+        bounds.height / 2
+      ),
+      // View position from scaled Celestial position
+      position = celestial.position.copy().scale(1 / this.scale),
+      // View offset position from Celestial origin
+      offset = celestial.size / 2;
+    // Return offset view position
+    return origin.add(position).subtract(offset);
   }
 
   /*----- Methods ------------------------------------------------------------*/

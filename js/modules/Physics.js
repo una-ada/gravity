@@ -31,6 +31,7 @@ export default class Physics {
   static interval = 1e3 / 120;
 
   /*----- Calculation Methods ------------------------------------------------*/
+  /** Update `Celestial#position`s based on `Celestial#velocity` */
   updatePositions() {
     this.model.scene.forEach(
       /** @arg obj {Celestial} */

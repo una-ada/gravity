@@ -33,7 +33,7 @@ let saturn = new Celestial({
   titan = new Celestial({
     name: "Titan",
     mass: 1.35e23,
-    position: new Point(0, -389), // not to scale
+    position: new Point(0, -1.187e9),
     velocity: new Vector(15.26e3, 0),
     size: 18, // not to scale
   });
@@ -42,3 +42,4 @@ model.scene.push(titan);
 view.loop();
 physics.loop();
 console.log(model);
+window.setTimeout(physics.stop, 100);

@@ -32,13 +32,33 @@ export class Point {
     return this;
   }
   /**
-   * Add another point to this point.
-   * @arg {Point} point A point to add to this point
+   * Add another point or number to this point.
+   * @arg {Point|number} addend A point to add to this point
    * @returns {Point} The updated point.
    */
-  add(point) {
-    this.x += point.x;
-    this.y += point.y;
+  add(addend) {
+    if(typeof addend === "number"){
+      this.x += addend;
+      this.y += addend;
+    } else {
+      this.x += addend.x;
+      this.y += addend.y;
+    }
+    return this;
+  }
+  /**
+   * Subtract another point or number from this point.
+   * @arg {Point|number} subtrahend A point to subtract from this point
+   * @returns {Point} The updated point.
+   */
+  subtract(subtrahend) {
+    if(typeof subtrahend === "number"){
+      this.x -= subtrahend;
+      this.y -= subtrahend;
+    } else {
+      this.x -= subtrahend.x;
+      this.y -= subtrahend.y;
+    }
     return this;
   }
   /**

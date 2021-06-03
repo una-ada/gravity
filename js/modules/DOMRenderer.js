@@ -27,12 +27,7 @@ export default class DOMRenderer extends Renderer {
    * @override
    */
   render() {
-    const scene = this.model.scene,
-      bounds = this.bounds,
-      origin = {
-        x: bounds.width / 2,
-        y: bounds.height / 2,
-      };
+    const scene = this.model.scene;
     scene.forEach(
       /** @arg obj {Celestial} */
       (obj) => {
@@ -40,9 +35,9 @@ export default class DOMRenderer extends Renderer {
         const elem = obj.element || this.generateElement(obj),
           // Avoid repeating elem.style a whole bunch.
           style = elem.style,
-          offset = 0 - obj.size / 2;
-        style.top = `${origin.y + obj.position.y + offset}px`;
-        style.left = `${origin.x + obj.position.x + offset}px`;
+          position = this.getPosition(obj);
+        style.left = `${position.x}px`;
+        style.top = `${position.y}px`;
         style.width = `${obj.size}px`;
         style.height = `${obj.size}px`;
       }
