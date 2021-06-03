@@ -37,8 +37,11 @@ export default class Renderer {
     /** @var {HTMLElement} container - DOM Element holding all game views. */
     this.container = el;
   }
-  /** Render the game scene. */
+  /**
+   * Render the game scene.
+   * @abstract
+   */
   render() {
-    console.error("Renderer#render() has not been overwritten by subclass!");
+    throw new Error("Renderer#render() must be implemented by subclass!");
   }
 }

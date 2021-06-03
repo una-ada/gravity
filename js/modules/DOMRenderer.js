@@ -7,6 +7,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import GameData from "./GameData.js";
 import Renderer from "./Renderer.js";
+import Celestial from "./Celestial.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module DOMRenderer - Manages the game view (DOM). */
@@ -21,13 +22,31 @@ export default class DOMRenderer extends Renderer {
   }
 
   /*---- Methods -------------------------------------------------------------*/
-  /** Render the game scene. */
+  /**
+   * Render the game scene.
+   * @override
+   */
   render() {
-    const scene = this.model.scene;
-    scene.forEach((obj) => {
-      // Make sure each Celestial has an Element
-      const elem = obj.element || this.generateElement(obj);
-    });
+    const scene = this.model.scene,
+      bounds = this.bounds,
+      origin = {
+        x: bounds.width / 2,
+        y: bounds.height / 2,
+      };
+    scene.forEach(
+      /** @arg obj {Celestial} */
+      (obj) => {
+        // Make sure each Celestial has an Element
+        const elem = obj.element || this.generateElement(obj),
+          // Avoid repeating elem.style a whole bunch.
+          style = elem.style,
+          offset = 0 - obj.size / 2;
+        style.top = `${origin.y + obj.position.y + offset}px`;
+        style.left = `${origin.x + obj.position.x + offset}px`;
+        style.width = `${obj.size}px`;
+        style.height = `${obj.size}px`;
+      }
+    );
   }
   /**
    * Create a rendering Element for a Celestial and append it to the container.

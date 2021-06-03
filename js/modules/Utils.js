@@ -1,7 +1,7 @@
 /**
  * @file    A collection of utility classes.
  * @author  Una Ada <una@anarchy.website>
- * @version 2021.06.02
+ * @version 2021.06.03
  */
 
 /*----- Classes --------------------------------------------------------------*/

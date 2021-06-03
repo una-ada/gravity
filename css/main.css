@@ -1,10 +1,23 @@
+/**
+ *  Styles for DOM Rendering
+ *  by Una Ada <una@anarchy.website>
+ *  June 3, 2021
+ */
+
+/*---- Override Agent Style --------------------------------------------------*/
 body {
   margin: 0;
 }
+
+/*----- Game View ------------------------------------------------------------*/
 gravity {
   height: 100%;
   left: 0;
   position: absolute;
   top: 0;
   width: 100%;
+}
+gravity > celestial {
+  background-color: black;
+  position: absolute;
 }

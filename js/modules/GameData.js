@@ -1,7 +1,7 @@
 /**
  * @file    Manages the game model.
  * @author  Una Ada <una@anarchy.website>
- * @version 2021.06.01
+ * @version 2021.06.03
  */
 
 /*----- Imports --------------------------------------------------------------*/
@@ -10,7 +10,7 @@ import Celestial from "./Celestial.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module GameData Manages the game model. */
-export default class {
+export default class GameData {
   /** Initialize a game model. */
   constructor() {
     /** @var {string} id Short game ID based on the current time. */

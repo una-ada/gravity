@@ -1,7 +1,7 @@
 /**
  * @file    Celestial game objects.
  * @author  Una Ada <una@anarchy.website>
- * @version 2021.06.02
+ * @version 2021.06.03
  */
 
 /*----- Imports --------------------------------------------------------------*/
@@ -23,19 +23,25 @@ export default class Celestial {
    */
   constructor(options) {
     /*----- Metadata ---------------------------------------------------------*/
+    /** @var {string} name Display name. */
     this.name = options.name || "Unnamed Celestial";
     /** @var {number} birth Creation timestamp. */
     this.birth = +new Date();
 
     /*----- Physics ----------------------------------------------------------*/
-    this.position = options.positions || new Point(0, 0);
+    /** @var {Point} position Position coordinates in meters. */
+    this.position = options.position || new Point(0, 0);
+    /** @var {Vector} velocity Velocity vector in meters/second. */
     this.velocity = options.velocity || new Vector(0, 0);
+    /** @var {number} mass Mass in kilograms. */
     this.mass = options.mass || 0;
     /** @TODO Add HitBox class */
     this.hitBox = null;
 
     /*----- Rendering --------------------------------------------------------*/
+    /** @var {number} size Width or diameter in meters. */
     this.size = options.size || 0;
+    /** @var {ImageData} texture The texture for rendering. */
     this.texture = options.texture || null;
   }
 }
