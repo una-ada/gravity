@@ -31,10 +31,22 @@ export class Point {
    * Update coordinates.
    * @arg {number} x - New x coordinate.
    * @arg {number} y - New y coordinate.
+   * @returns {Point} The updated point.
    */
   update(x, y) {
     this.x = x;
     this.y = y;
+    return this;
+  }
+  /**
+   * Add another point to this point.
+   * @arg {Point} point A point to add to this point
+   * @returns {Point} The updated point.
+   */
+  add(point) {
+    this.x += point.x;
+    this.y += point.y;
+    return this;
   }
 }
 /** A 2-dimensional vector in cartesian coordinated. */
@@ -76,8 +88,18 @@ export class Vector extends Point {
   /**
    * Create a copy of the vector.
    * @returns {Vector} A copy of the vector.
+   * @override
    */
   copy() {
     return new Vector(this.x, this.y);
+  }
+  /**
+   * Multiply the vector components by a scalar.
+   * @arg {number} scalar The scalar to multiply the components by.
+   * @returns {Vector} The updated vector.
+   */
+  scale(scalar) {
+    this.magnitude = this.magnitude * scalar;
+    return this;
   }
 }
