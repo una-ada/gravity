@@ -19,8 +19,6 @@ export class Point {
     this.y = y;
   }
 
-
-
   /*----- Methods ------------------------------------------------------------*/
   /**
    * Create a point of the point.

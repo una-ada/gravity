@@ -1,7 +1,7 @@
 /**
  * @file    Superclass for managing game view.
  * @author  Una Ada <una@anarchy.website>
- * @version 2021.06.01
+ * @version 2021.06.03
  */
 
 /*----- Imports --------------------------------------------------------------*/
@@ -9,7 +9,7 @@ import GameData from "./GameData.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module Renderer - Superclass for managing game view. */
-export default class {
+export default class Renderer {
   /**
    * Initialize base rendering functions.
    * @arg {GameData} model - A game model instance.
@@ -18,6 +18,15 @@ export default class {
     /** @var {GameData} model - Reference to the game's model. */
     this.model = model;
   }
+
+  /*---- Setters and getters -------------------------------------------------*/
+  /** @type {number[]} */
+  get bounds() {
+    const { top, left, height, width } = this.container.getBoundingClientRect();
+    return { top, left, height, width };
+  }
+
+  /*----- Methods ------------------------------------------------------------*/
   /**
    * Sets the view container
    * @arg {HTMLElement} el - Element to set as view container.
@@ -28,9 +37,8 @@ export default class {
     /** @var {HTMLElement} container - DOM Element holding all game views. */
     this.container = el;
   }
-  /** @type {number[]} */
-  get bounds() {
-    const { top, left, height, width } = this.container.getBoundingClientRect();
-    return { top, left, height, width };
+  /** Render the game scene. */
+  render() {
+    console.error("Renderer#render() has not been overwritten by subclass!");
   }
 }
