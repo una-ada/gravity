@@ -7,6 +7,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import { Point, Vector } from "./Utils.js";
 
+/*----- Classes --------------------------------------------------------------*/
 /** @module GameData - Manages the game model. */
 export default class {
   /** Initialize a game model. */

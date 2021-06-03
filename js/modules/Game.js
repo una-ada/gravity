@@ -5,21 +5,25 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
+import Celestial from "./Celestial.js";
 import GameData from "./GameData.js";
 import Renderer from "./Renderer.js";
 
+/*----- Classes --------------------------------------------------------------*/
 /** @module Game - Manages the game controller. */
 export default class Game {
   /**
    * Initialize a game controller.
-   * @param {GameData} model - A game model instance.
-   * @param {Renderer} view - A game view instance.
+   * @arg {GameData} model - A game model instance.
+   * @arg {Renderer} view - A game view instance.
    */
   constructor(model, view) {
     /** @var {GameData} model - Reference to the game's model */
     this.model = model;
     /** @var {Renderer} view - Reference to the game's view */
     this.view = view;
+    
+    let test = new Celestial({name: "Fuck"});
   }
 
   /*----- Constants ----------------------------------------------------------*/
@@ -34,7 +38,7 @@ export default class Game {
   /*----- Event Handlers -----------------------------------------------------*/
   /**
    * Handle mouse down events
-   * @param {MouseEvent} e - Mouse down event
+   * @arg {MouseEvent} e - Mouse down event
    */
   handleMouseDown(e) {
     let mouse = this.model.mouse;
@@ -44,7 +48,7 @@ export default class Game {
   }
   /**
    * Handle mouse up events
-   * @param {MouseEvent} e - Mouse up event
+   * @arg {MouseEvent} e - Mouse up event
    */
   handleMouseUp(e) {
     let mouse = this.model.mouse;
@@ -53,7 +57,7 @@ export default class Game {
   }
   /**
    * Handle mouse move events
-   * @param {MouseEvent} e - Mouse move event
+   * @arg {MouseEvent} e - Mouse move event
    */
   handleMouseMove(e) {
     this.model.mouse.position.update(e.pageX, e.pageY);

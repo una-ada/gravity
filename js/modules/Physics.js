@@ -4,6 +4,7 @@
  * @version 2021.06.01
  */
 
+/*----- Classes --------------------------------------------------------------*/
 /** @module Physics - Manages the physics simulation. */
 export default class {
   /** Initialize physics engine. */

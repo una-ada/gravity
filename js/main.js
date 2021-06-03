@@ -10,6 +10,7 @@ import DOMRenderer from "./modules/DOMRenderer.js";
 import Physics from "./modules/Physics.js";
 import GameData from "./modules/GameData.js";
 
+/*----- Initialize -----------------------------------------------------------*/
 const model = new GameData(),
   view = new DOMRenderer(model),
   physics = new Physics(model),

@@ -8,11 +8,12 @@
 import GameData from "./GameData.js";
 import Renderer from "./Renderer.js";
 
+/*----- Classes --------------------------------------------------------------*/
 /** @module DOMRenderer - Manages the game view (DOM). */
 export default class extends Renderer {
   /**
    * Initialize a DOM-based renderer.
-   * @param {GameData} model - A game model instance.
+   * @arg {GameData} model - A game model instance.
    */
   constructor(model) {
     super(model);

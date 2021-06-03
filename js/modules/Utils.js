@@ -4,12 +4,13 @@
  * @version 2021.06.02
  */
 
+/*----- Classes --------------------------------------------------------------*/
 /** A single point in cartesian coordinated. */
 export class Point {
   /**
    * Create a single point.
-   * @param {number} x - The point's x coordinate.
-   * @param {number} y - The point's y coordinate.
+   * @arg {number} x - The point's x coordinate.
+   * @arg {number} y - The point's y coordinate.
    */
   constructor(x, y) {
     /** @var {number} Point#x - The point's x coordinate. */
@@ -19,8 +20,8 @@ export class Point {
   }
   /**
    * Update coordinates.
-   * @param {number} x - New x coordinate.
-   * @param {number} y - New y coordinate.
+   * @arg {number} x - New x coordinate.
+   * @arg {number} y - New y coordinate.
    */
   update(x, y) {
     this.x = x;
@@ -31,8 +32,8 @@ export class Point {
 export class Vector extends Point {
   /**
    * Create a 2-dimensional vector.
-   * @param {number} x - The vector's x length.
-   * @param {number} y - The vector's y length.
+   * @arg {number} x - The vector's x length.
+   * @arg {number} y - The vector's y length.
    */
   constructor(x, y) {
     super(x, y);

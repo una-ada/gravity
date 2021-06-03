@@ -7,11 +7,12 @@
 /*----- Imports --------------------------------------------------------------*/
 import GameData from "./GameData.js";
 
+/*----- Classes --------------------------------------------------------------*/
 /** @module Renderer - Superclass for managing game view. */
 export default class {
   /**
    * Initialize base rendering functions.
-   * @param {GameData} model - A game model instance.
+   * @arg {GameData} model - A game model instance.
    */
   constructor(model) {
     /** @var {GameData} model - Reference to the game's model. */
@@ -19,7 +20,7 @@ export default class {
   }
   /**
    * Sets the view container
-   * @param {HTMLElement} el - Element to set as view container.
+   * @arg {HTMLElement} el - Element to set as view container.
    */
   setContainer(el) {
     el.id = `gravity-${this.model.id}`;
