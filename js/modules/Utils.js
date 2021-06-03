@@ -71,6 +71,21 @@ export class Point {
     this.y *= scalar;
     return this;
   }
+  /**
+   * Get a copy of this Point as a Vector.
+   * @returns {Vector} Copy of this Point as a Vector.
+   */
+  copyAsVector() {
+    return new Vector(this.x, this.y);
+  }
+  /**
+   * Get a Vector between two points.
+   * @param {Point} point 
+   * @returns {Vector} A Vector between this Point and another Point.
+   */
+  vectorTo(point) {
+    return point.copyAsVector().subtract(this);
+  }
 
   /*----- Methods ------------------------------------------------------------*/
   /**
