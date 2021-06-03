@@ -49,6 +49,6 @@ export default class Renderer {
   /** Render on animationFrame */
   loop() {
     if (this.running) this.render();
-    requestAnimationFrame(this.loop);
+    requestAnimationFrame(this.loop.bind(this));
   }
 }

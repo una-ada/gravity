@@ -37,8 +37,7 @@ let saturn = new Celestial({
     velocity: new Vector(15.26e3, 0),
     size: 18, // not to scale
   });
-console.log(new Point(0, -389) || "Point is falsey???");
 model.scene.push(saturn);
 model.scene.push(titan);
-view.render();
+view.loop();
 console.log(model);
