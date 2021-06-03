@@ -40,4 +40,5 @@ let saturn = new Celestial({
 model.scene.push(saturn);
 model.scene.push(titan);
 view.loop();
+physics.loop();
 console.log(model);

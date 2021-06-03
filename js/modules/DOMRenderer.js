@@ -10,11 +10,11 @@ import Renderer from "./Renderer.js";
 import Celestial from "./Celestial.js";
 
 /*----- Classes --------------------------------------------------------------*/
-/** @module DOMRenderer - Manages the game view (DOM). */
+/** @module DOMRenderer Manages the game view (DOM). */
 export default class DOMRenderer extends Renderer {
   /**
    * Initialize a DOM-based renderer.
-   * @arg {GameData} model - A game model instance.
+   * @arg {GameData} model A game model instance.
    */
   constructor(model) {
     super(model);
