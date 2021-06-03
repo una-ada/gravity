@@ -37,7 +37,7 @@ export class Point {
    * @returns {Point} The updated point.
    */
   add(addend) {
-    if(typeof addend === "number"){
+    if (typeof addend === "number") {
       this.x += addend;
       this.y += addend;
     } else {
@@ -52,7 +52,7 @@ export class Point {
    * @returns {Point} The updated point.
    */
   subtract(subtrahend) {
-    if(typeof subtrahend === "number"){
+    if (typeof subtrahend === "number") {
       this.x -= subtrahend;
       this.y -= subtrahend;
     } else {
@@ -80,7 +80,7 @@ export class Point {
   }
   /**
    * Get a Vector between two points.
-   * @param {Point} point 
+   * @param {Point} point
    * @returns {Vector} A Vector between this Point and another Point.
    */
   vectorTo(point) {

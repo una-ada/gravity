@@ -42,4 +42,3 @@ model.scene.push(titan);
 view.loop();
 physics.loop();
 console.log(model);
-window.setTimeout(physics.stop, 100);

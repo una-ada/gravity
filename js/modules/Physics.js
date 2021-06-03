@@ -38,6 +38,21 @@ export default class Physics {
       (obj) => obj.position.add(obj.velocity.copy().scale(Physics.timeScale))
     );
   }
+  /**
+   * Calculate gravitational acceleration between two Celestial instances
+   * @param {Celestial} m_1 Celestial to apply acceleration to.
+   * @param {Celestial} m_2 Celestial applying the acceleration.
+   * @returns {Vector} Gravitational acceleration Vector.
+   */
+  gravitate(m_1, m_2) {
+    // Vector between m_1 and m_2
+    const between = m_1.position.vectorTo(m_2.position),
+      // Distance between m_1 and m_2
+      r = between.magnitude;
+    // Make `between` a unit vector
+    between.magnitude = 1;
+    return between.scale((Physics.G * m_2.mass) / r ** 2);
+  }
 
   /*----- Running Methods ----------------------------------------------------*/
   /** Calculate physics on a set interval. */
