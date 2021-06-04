@@ -92,6 +92,8 @@ export default class Physics {
     this.model.scene.forEach(
       /** @arg m_1 {Celestial} */
       (m_1) =>
+        //m_1 instanceof Celestial &&
+        //m_1.physical &&
         // Add to the velocity
         m_1.velocity.add(
           this.model.scene
@@ -102,6 +104,8 @@ export default class Physics {
                * @arg {Celestial} m_2 Celestial applying acceleration
                */
               (acc, m_2) =>
+                //m_2 instanceof Celestial &&
+                //m_2.physical &&
                 // Add gravitational acceleration if not same celestial
                 m_1 === m_2 ? acc : acc.add(this.gravitate(m_1, m_2)),
               // Initialize an zero acceleration vector
@@ -116,7 +120,10 @@ export default class Physics {
   updatePositions() {
     this.model.scene.forEach(
       /** @arg obj {Celestial} */
-      (obj) => obj.position.add(obj.velocity.copy().scale(Physics.TIME_SCALE))
+      (obj) =>
+        obj instanceof Celestial &&
+        obj.physical &&
+        obj.position.add(obj.velocity.copy().scale(Physics.TIME_SCALE))
     );
   }
 

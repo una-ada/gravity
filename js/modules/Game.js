@@ -22,8 +22,6 @@ export default class Game {
     this.model = model;
     /** @var {Renderer} view - Reference to the game's view */
     this.view = view;
-    
-    let test = new Celestial({name: "Fuck"});
   }
 
   /*----- Constants ----------------------------------------------------------*/

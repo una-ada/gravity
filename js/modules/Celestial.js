@@ -14,6 +14,7 @@ export default class Celestial {
    * Create a new celestial game object.
    * @arg {Object} options Optional parameters.
    * @arg {string} [options.name="Unnamed Celestial"] Display name.
+   * @arg {boolean} [options.physical=false] Can the object be manipulated?
    * @arg {Point} [options.position] Position coordinates in meters.
    * @arg {Vector} [options.velocity] Velocity vector in meters/second.
    * @arg {Vector} [options.acceleration] Acceleration vector in meters/second^2
@@ -30,6 +31,8 @@ export default class Celestial {
     this.birth = +new Date();
 
     /*----- Physics ----------------------------------------------------------*/
+    /** @var {boolean} physical Can the object be manipulated? */
+    this.physical = options.physical || false;
     /** @var {Point} position Position coordinates in meters. */
     this.position = options.position || new Point(0, 0);
     /** @var {Vector} velocity Velocity vector in meters/second. */
