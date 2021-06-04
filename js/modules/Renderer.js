@@ -48,7 +48,7 @@ export default class Renderer {
       // View position from scaled Celestial position
       position = celestial.position.copy().scale(1 / this.scale),
       // View offset position from Celestial origin
-      offset = celestial.size / 2;
+      offset = celestial.size / (this.scale * 2);
     // Return offset view position
     return origin.add(position).subtract(offset);
   }

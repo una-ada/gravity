@@ -38,8 +38,8 @@ export default class DOMRenderer extends Renderer {
           position = this.getPosition(obj);
         style.left = `${position.x}px`;
         style.top = `${position.y}px`;
-        style.width = `${obj.size}px`;
-        style.height = `${obj.size}px`;
+        style.width = `${obj.size / this.scale}px`;
+        style.height = `${obj.size / this.scale}px`;
         if(obj.collisions.length > 0)
           style.backgroundColor = "red";
       }

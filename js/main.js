@@ -28,14 +28,14 @@ document.addEventListener("mousemove", game.handleMouseMove.bind(game));
 let saturn = new Celestial({
     name: "Saturn",
     mass: 5.683e26,
-    size: 102, // not to scale
+    size: 3.06e8,
   }),
   titan = new Celestial({
     name: "Titan",
     mass: 1.35e23,
     position: new Point(0, -1.187e9),
     //velocity: new Vector(5.57e3, 0),
-    size: 18, // not to scale
+    size: 0.54e8,
   });
 model.scene.push(saturn);
 model.scene.push(titan);
