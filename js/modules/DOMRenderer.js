@@ -29,7 +29,7 @@ export default class DOMRenderer extends Renderer {
   render() {
     const scene = this.model.scene;
     scene.forEach(
-      /** @arg obj {Celestial} */
+      /** @arg {Celestial} obj */
       (obj) => {
         // Make sure each Celestial has an Element
         const elem = obj.element || this.generateElement(obj),
@@ -40,6 +40,8 @@ export default class DOMRenderer extends Renderer {
         style.top = `${position.y}px`;
         style.width = `${obj.size}px`;
         style.height = `${obj.size}px`;
+        if(obj.collisions.length > 0)
+          style.backgroundColor = "red";
       }
     );
   }

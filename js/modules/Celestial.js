@@ -38,6 +38,8 @@ export default class Celestial {
     this.mass = options.mass || 0;
     /** @var {string} hitBox Shape of the hit box */
     this.hitBox = options.hitBox || "CIRCLE";
+    /** @var {Object[]} collisions Log of collisions with other objects. */
+    this.collisions = [];
 
     /*----- Rendering --------------------------------------------------------*/
     /** @var {number} size Width or diameter in meters. */

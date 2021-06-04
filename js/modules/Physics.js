@@ -41,7 +41,7 @@ export default class Physics {
          * @arg {Celestial} b
          * @returns {boolean}
          */
-        (a, b) => a.position.vectorTo(b.position).magnitude > a.size + b.size,
+        (a, b) => a.position.vectorTo(b.position).magnitude < a.size + b.size,
     },
   };
   /**
@@ -69,11 +69,21 @@ export default class Physics {
   }
 
   /*----- Calculation Methods ------------------------------------------------*/
-  /** Update `Celestial#position`s based on `Celestial#velocity` */
-  updatePositions() {
+  /** Update `Celestial#collisions` */
+  updateCollisions() {
     this.model.scene.forEach(
-      /** @arg obj {Celestial} */
-      (obj) => obj.position.add(obj.velocity.copy().scale(Physics.TIME_SCALE))
+      /** @arg a {Celestial} */
+      (a) =>
+        this.model.scene.forEach(
+          /** @arg b {Celestial} */
+          (b) =>
+            a !== b &&
+            this.checkIntersection(a, b) &&
+            a.collisions.push({
+              time: +new Date(),
+              who: b,
+            })
+        )
     );
   }
   /** Update `Celestial#velocity`s based on gravitational acceleration */
@@ -101,6 +111,13 @@ export default class Physics {
         )
     );
   }
+  /** Update `Celestial#position`s based on `Celestial#velocity` */
+  updatePositions() {
+    this.model.scene.forEach(
+      /** @arg obj {Celestial} */
+      (obj) => obj.position.add(obj.velocity.copy().scale(Physics.TIME_SCALE))
+    );
+  }
 
   /*----- Running Methods ----------------------------------------------------*/
   /** Calculate physics on a set interval. */
@@ -119,5 +136,6 @@ export default class Physics {
   step() {
     this.updateVelocities();
     this.updatePositions();
+    this.updateCollisions();
   }
 }

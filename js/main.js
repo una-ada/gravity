@@ -34,7 +34,7 @@ let saturn = new Celestial({
     name: "Titan",
     mass: 1.35e23,
     position: new Point(0, -1.187e9),
-    velocity: new Vector(5.57e3, 0),
+    //velocity: new Vector(5.57e3, 0),
     size: 18, // not to scale
   });
 model.scene.push(saturn);
