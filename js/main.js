@@ -33,19 +33,10 @@ let saturn = new Celestial({
     size: 3.06e8,
     texture: "./img/celestial-saturn.svg",
   }),
-  titan = new Celestial({
-    name: "Titan",
-    physical: true,
-    mass: 1.35e23,
-    position: new Point(0, -1.187e9),
-    velocity: new Vector(5.57e3, 0),
-    size: 0.54e8,
-  }),
   target = new Area(new Point(1.0e9, -1e8), new Point(0.559e9, 2e8), {
     name: "Target",
   });
 model.scene.push(saturn);
-model.scene.push(titan);
 model.scene.push(target);
 
 /*---- Start Game ------------------------------------------------------------*/

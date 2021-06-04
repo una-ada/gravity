@@ -1,7 +1,7 @@
 /**
  * @file    Manages the game model.
  * @author  Una Ada <una@anarchy.website>
- * @version 2021.06.03
+ * @version 2021.06.04
  */
 
 /*----- Imports --------------------------------------------------------------*/
@@ -18,6 +18,10 @@ export default class GameData {
     this.id = Math.round(+new Date() / 1e3).toString(26);
     /** @var {Celestial[]} scene Array of game objects in current scene. */
     this.scene = [];
+    /** @var {HTMLElement} healthDisplay Remaining attempts display element. */
+    this.healthDisplay = document.querySelector("div#health");
+    /** @var {HTMLElement} message Element displaying game message. */
+    this.message = document.querySelector("div#message");
 
     /*----- Default Level Data -----------------------------------------------*/
     /** @var {number} health Number of remaining attempts for current level. */

@@ -54,7 +54,7 @@ gravity > celestial {
 }
 
 /*----- Game Stats -----------------------------------------------------------*/
-div#lives,
+div#health,
 div#message {
   position: absolute;
   user-select: none;
@@ -62,7 +62,7 @@ div#message {
   -moz-user-select: none;
   z-index: 200;
 }
-div#lives {
+div#health {
   bottom: 20px;
   left: 50px;
 }

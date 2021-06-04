@@ -147,7 +147,7 @@ export class Vector extends Point {
    * @override
    */
   scale(scalar) {
-    this.magnitude = this.magnitude * scalar;
+    this.magnitude > 0 && (this.magnitude = this.magnitude * scalar);
     return this;
   }
   /**

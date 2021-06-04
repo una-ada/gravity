@@ -27,7 +27,8 @@ export default class DOMRenderer extends Renderer {
    * @override
    */
   render() {
-    const scene = this.model.scene;
+    const model = this.model,
+      scene = model.scene;
     scene.forEach(
       /** @arg {Celestial} obj */
       (obj) => {
@@ -52,6 +53,10 @@ export default class DOMRenderer extends Renderer {
               ];
       }
     );
+    model.healthDisplay.textContent = `${Math.max(
+      0,
+      model.health
+    )} lives remaining.`;
   }
   /**
    * Create an Element for a game object and append it to the container.
