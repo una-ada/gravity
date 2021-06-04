@@ -43,3 +43,5 @@ model.scene.push(saturn);
 model.scene.push(titan);
 view.loop();
 physics.loop();
+game.loop();
+console.log(model);

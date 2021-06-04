@@ -18,6 +18,7 @@ gravity {
   width: 100%;
 }
 gravity > celestial {
-  background-color: black;
+  background-color: #333;
+  border-radius: 50%;
   position: absolute;
 }

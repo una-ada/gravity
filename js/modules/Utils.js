@@ -150,4 +150,29 @@ export class Vector extends Point {
     this.magnitude = this.magnitude * scalar;
     return this;
   }
+  /**
+   * Rotate the vector by a specified angle in radians
+   * @arg {number} angle The angle to rotate by.
+   * @returns {Vector} The updated vector
+   */
+  rotate(angle) {
+    this.direction = this.direction + angle;
+    return this;
+  }
+  /**
+   * Reflect the vector vertically
+   * @returns {Vector} The updated vector
+   */
+  reflectVertical() {
+    this.y = 0 - this.y;
+    return this;
+  }
+  /**
+   * Reflect the vector horizontally
+   * @returns {Vector} The updated vector
+   */
+  reflectHorizontal() {
+    this.x = 0 - this.x;
+    return this;
+  }
 }

@@ -13,8 +13,19 @@ import Celestial from "./Celestial.js";
 export default class GameData {
   /** Initialize a game model. */
   constructor() {
+    /*----- Rendering --------------------------------------------------------*/
     /** @var {string} id Short game ID based on the current time. */
     this.id = Math.round(+new Date() / 1e3).toString(26);
+    /** @var {Celestial[]} scene Array of game objects in current scene. */
+    this.scene = [];
+
+    /*----- Default Level Data -----------------------------------------------*/
+    /** @var {number} health Number of remaining attempts for current level. */
+    this.health = 3;
+    /** @var {boolean} customMassAllowed Can the player customize mass? */
+    this.customMassAllowed = true;
+
+    /*----- Input Handling ---------------------------------------------------*/
     /** @var {Object} mouse Data regarding the user's mouse. */
     this.mouse = {
       /** @var {boolean} mouse.isDown Is mouse currently down? */
@@ -23,8 +34,12 @@ export default class GameData {
       initPosition: new Point(0, 0),
       /** @var {Object} mouse.position Current position of mouse. */
       position: new Point(0, 0),
+      /** @var {Vector} mouse.change Change in position since mouse down. */
+      change: new Vector(0, 0),
     };
-    /** @var {Celestial[]} scene Array of game objects in current scene. */
-    this.scene = [];
+    /** @var {boolean} isCreating Is currently creating a new Celestial? */
+    this.isCreating = false;
+    /** @var {Celestial} newborn Newest created Celestial.  */
+    this.newborn = null;
   }
 }

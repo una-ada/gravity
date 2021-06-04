@@ -31,6 +31,16 @@ export default class Renderer {
     const { top, left, height, width } = this.container.getBoundingClientRect();
     return { top, left, height, width };
   }
+  /** @var {Point} origin View origin point. */
+  get origin() {
+    const bounds = this.bounds;
+    return new Point(bounds.width / 2, bounds.height / 2);
+  }
+  /** @var {Point} offset */
+  get offset() {
+    const bounds = this.bounds;
+    return new Point(bounds.left, bounds.top);
+  }
 
   /*----- Functions ----------------------------------------------------------*/
   /**
@@ -39,12 +49,7 @@ export default class Renderer {
    * @returns {Point} View position for the Celestial.
    */
   getPosition(celestial) {
-    const bounds = this.bounds,
-      // View origin point (0, 0)
-      origin = new Point(
-        bounds.width / 2,
-        bounds.height / 2
-      ),
+    const origin = this.origin,
       // View position from scaled Celestial position
       position = celestial.position.copy().scale(1 / this.scale),
       // View offset position from Celestial origin
@@ -73,7 +78,8 @@ export default class Renderer {
   }
   /** Render on animationFrame */
   loop() {
-    if (this.running) this.render();
-    requestAnimationFrame(this.loop.bind(this));
+    if (this.running) requestAnimationFrame(this.loop.bind(this));
+    else return;
+    this.render();
   }
 }
