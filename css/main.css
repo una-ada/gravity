@@ -79,3 +79,9 @@ div#repo {
   text-align: right;
   z-index: 200;
 }
+span.blue {
+  color: blue;
+}
+span.red {
+  color: red;
+}

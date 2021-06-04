@@ -57,6 +57,14 @@ export default class DOMRenderer extends Renderer {
       0,
       model.health
     )} lives remaining.`;
+    model.message.innerHTML =
+      model.condition === "PLAY"
+        ? `Shoot the moon from the
+          <span class="red">red</span> area into the
+          <span class="blue">blue</span> area.`
+        : model.condition === "WIN"
+          ? `You win! Congratulations!`
+          : `<span class="red">You lost! Oh no!</span>`;
   }
   /**
    * Create an Element for a game object and append it to the container.

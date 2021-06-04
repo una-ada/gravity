@@ -28,6 +28,8 @@ export default class GameData {
     this.health = 3;
     /** @var {boolean} customMassAllowed Can the player customize mass? */
     this.customMassAllowed = true;
+    /** @var {string} condition Current game condition. */
+    this.condition = "PLAY";
 
     /*----- Input Handling ---------------------------------------------------*/
     /** @var {Object} mouse Data regarding the user's mouse. */
