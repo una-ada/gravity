@@ -71,6 +71,7 @@ export default class Physics {
          * @returns {boolean}
          */
         (a, b) => Physics.pointInRectangle(b.position, a),
+      RECTANGLE: () => false,
     },
   };
   /**
