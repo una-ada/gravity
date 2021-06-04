@@ -8,7 +8,7 @@
 import GameData from "./GameData.js";
 import Celestial from "./Celestial.js";
 import Area from "./Area.js";
-import { Vector } from "./Utils.js";
+import { Point, Vector } from "./Utils.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module Physics Manages the physics simulation. */
@@ -40,6 +40,7 @@ export default class Physics {
    * @returns {boolean}
    */
   static pointInRectangle(point, rect) {
+    if(!(point instanceof Point && rect instanceof Area)) return;
     let p1 = rect.position.copy(),
       p2 = p1.copy().add(rect.size);
     return point.x > p1.x && point.x < p2.x && point.y > p1.y && point.y < p2.y;
@@ -71,7 +72,9 @@ export default class Physics {
          * @returns {boolean}
          */
         (a, b) => Physics.pointInRectangle(b.position, a),
-      RECTANGLE: () => false,
+      RECTANGLE:
+        // This will always be false because only Areas are rectangles for now!
+        () => false,
     },
   };
   /**

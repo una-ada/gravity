@@ -57,7 +57,7 @@ export default class DOMRenderer extends Renderer {
     model.healthDisplay.textContent = `${Math.max(
       0,
       model.health
-    )} lives remaining.`;
+    )} attempts remaining.`;
     model.message.innerHTML =
       model.condition === "PLAY"
         ? `Shoot the moon from the

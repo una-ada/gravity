@@ -7,6 +7,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import Celestial from "./Celestial.js";
 import GameData from "./GameData.js";
+import Physics from "./Physics.js";
 import Renderer from "./Renderer.js";
 
 /*----- Classes --------------------------------------------------------------*/
@@ -71,6 +72,7 @@ export default class Game {
     if (!this.running) return;
     const model = this.model,
       mouse = this.model.mouse;
+    let scaledClick;
     // Handle player input
     model.condition === "PLAY" &&
       (mouse.isDown
@@ -86,15 +88,19 @@ export default class Game {
               model.customMassAllowed && (model.newborn.mass *= Game.SCALE.mass)
           : // Create new Celestial on mouse down
             model.health > 0 &&
+            Physics.pointInRectangle(
+              (scaledClick = this.view.origin
+                .copy()
+                .subtract(mouse.position)
+                .subtract(this.view.offset)
+                .scale(0 - this.view.scale)),
+              model.playArea
+            ) &&
             (model.isCreating = true) &&
             (model.newborn = new Celestial({
               name: "played",
               mass: 1.35e23,
-              position: this.view.origin
-                .copy()
-                .subtract(mouse.position)
-                .subtract(this.view.offset)
-                .scale(0 - this.view.scale),
+              position: scaledClick,
               size: 0.54e8,
             })) &&
             model.scene.push(model.newborn)

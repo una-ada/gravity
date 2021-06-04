@@ -53,13 +53,13 @@ export default class GameData {
   /** @var {Area} target The level target area. */
   get target() {
     return this.scene.find(
-      (obj) => obj instanceof Area && obj.name.toLowercase() === "target"
+      (obj) => obj instanceof Area && obj.name.toLowerCase() === "target"
     );
   }
   /** @var {Area} playArea The level play area. */
   get playArea() {
     return this.scene.find(
-      (obj) => obj instanceof Area && obj.name.toLowerCase() === "play area"
+      (obj) => obj instanceof Area && obj.name.toLowerCase() === "play"
     );
   }
 }
