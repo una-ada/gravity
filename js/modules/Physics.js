@@ -92,8 +92,8 @@ export default class Physics {
     this.model.scene.forEach(
       /** @arg m_1 {Celestial} */
       (m_1) =>
-        //m_1 instanceof Celestial &&
-        //m_1.physical &&
+        m_1 instanceof Celestial &&
+        m_1.physical &&
         // Add to the velocity
         m_1.velocity.add(
           this.model.scene
@@ -104,8 +104,8 @@ export default class Physics {
                * @arg {Celestial} m_2 Celestial applying acceleration
                */
               (acc, m_2) =>
-                //m_2 instanceof Celestial &&
-                //m_2.physical &&
+                m_2 instanceof Celestial &&
+                m_2.physical &&
                 // Add gravitational acceleration if not same celestial
                 m_1 === m_2 ? acc : acc.add(this.gravitate(m_1, m_2)),
               // Initialize an zero acceleration vector
@@ -134,7 +134,6 @@ export default class Physics {
       this.step.bind(this),
       Physics.INTERVAL
     );
-    console.log(`Physics running on loop ${this._intervalId}`);
   }
   /** Stop the physics engine loop. */
   stop() {

@@ -27,6 +27,7 @@ document.addEventListener("mousemove", game.handleMouseMove.bind(game));
 /*---- Temporary Level -------------------------------------------------------*/
 let saturn = new Celestial({
     name: "Saturn",
+    physical: true,
     mass: 5.683e26,
     size: 3.06e8,
   }),
@@ -35,13 +36,10 @@ let saturn = new Celestial({
     physical: true,
     mass: 1.35e23,
     position: new Point(0, -1.187e9),
-    //velocity: new Vector(5.57e3, 0),
+    velocity: new Vector(5.57e3, 0),
     size: 0.54e8,
   });
 model.scene.push(saturn);
 model.scene.push(titan);
 view.loop();
 physics.loop();
-console.log(model);
-physics.updateVelocities();
-model.scene.forEach(o => console.log(o instanceof Celestial));
