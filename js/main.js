@@ -11,6 +11,7 @@ import Physics from "./modules/Physics.js";
 import GameData from "./modules/GameData.js";
 import Celestial from "./modules/Celestial.js";
 import { Point, Vector } from "./modules/Utils.js";
+import Area from "./modules/Area.js";
 
 /*----- Initialize -----------------------------------------------------------*/
 const model = new GameData(),
@@ -38,9 +39,13 @@ let saturn = new Celestial({
     position: new Point(0, -1.187e9),
     velocity: new Vector(5.57e3, 0),
     size: 0.54e8,
+  }),
+  target = new Area(new Point(1.0e9, -1e8), new Point(0.559e9, 2e8), {
+    name: "Target",
   });
 model.scene.push(saturn);
 model.scene.push(titan);
+model.scene.push(target);
 view.loop();
 physics.loop();
 game.loop();

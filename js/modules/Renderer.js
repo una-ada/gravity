@@ -44,16 +44,16 @@ export default class Renderer {
 
   /*----- Functions ----------------------------------------------------------*/
   /**
-   * Get the appropriate view position for a Celestial instance.
-   * @param {Celestial} celestial
-   * @returns {Point} View position for the Celestial.
+   * Get the appropriate view position for a game object.
+   * @param {Celestial|Area} obj
+   * @returns {Point} View position for the game object.
    */
-  getPosition(celestial) {
+  getPosition(obj) {
     const origin = this.origin,
-      // View position from scaled Celestial position
-      position = celestial.position.copy().scale(1 / this.scale),
+      // View position from scaled game object position
+      position = obj.position.copy().scale(1 / this.scale),
       // View offset position from Celestial origin
-      offset = celestial.size / (this.scale * 2);
+      offset = obj instanceof Celestial ? obj.size / (this.scale * 2) : 0;
     // Return offset view position
     return origin.add(position).subtract(offset);
   }

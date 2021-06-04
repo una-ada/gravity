@@ -7,6 +7,7 @@
 /*----- Imports --------------------------------------------------------------*/
 import GameData from "./GameData.js";
 import Celestial from "./Celestial.js";
+import Area from "./Area.js";
 import { Vector } from "./Utils.js";
 
 /*----- Classes --------------------------------------------------------------*/
@@ -32,6 +33,18 @@ export default class Physics {
   static INTERVAL = 1e3 / 120;
 
   /*----- Calculation Functions ----------------------------------------------*/
+  /**
+   * Check if center of circle is within a rectangle
+   * @arg {Area} a
+   * @arg {Celestial} b
+   * @returns {boolean}
+   */
+  static circleInRectangle(a, b) {
+    let p1 = a.position.copy(),
+      p2 = p1.copy().add(a.size),
+      c = b.position.copy();
+    return c.x > p1.x && c.x < p2.x && c.y > p1.y && c.y < p2.y;
+  }
   /** @const {Object} INTERSECT_CHECKS Intersect function store. */
   static INTERSECT_CHECKS = {
     CIRCLE: {
@@ -43,6 +56,16 @@ export default class Physics {
          */
         (a, b) =>
           a.position.vectorTo(b.position).magnitude < (a.size + b.size) / 2,
+      RECTANGLE:
+        /**
+         * @arg {Celestial} a
+         * @arg {Area} b
+         * @returns {boolean}
+         */
+        (a, b) => Physics.circleInRectangle(b, a),
+    },
+    RECTANGLE: {
+      CIRCLE: Physics.circleInRectangle,
     },
   };
   /**
@@ -104,10 +127,10 @@ export default class Physics {
                * @arg {Celestial} m_2 Celestial applying acceleration
                */
               (acc, m_2) =>
-                m_2 instanceof Celestial &&
-                m_2.physical &&
                 // Add gravitational acceleration if not same celestial
-                m_1 === m_2 ? acc : acc.add(this.gravitate(m_1, m_2)),
+                m_2 instanceof Celestial && m_2.physical && m_1 !== m_2
+                  ? acc.add(this.gravitate(m_1, m_2))
+                  : acc,
               // Initialize an zero acceleration vector
               new Vector(0, 0)
             )

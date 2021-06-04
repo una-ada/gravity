@@ -13,9 +13,14 @@ body {
 gravity {
   height: 100%;
   left: 0;
+  overflow: hidden;
   position: absolute;
   top: 0;
   width: 100%;
+}
+gravity > viewarea {
+  background-color: #999;
+  position: absolute;
 }
 gravity > celestial {
   background-color: #333;
