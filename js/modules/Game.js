@@ -109,6 +109,18 @@ export default class Game {
           (model.newborn.physical = true) &&
           (model.health -= 1) &&
           (model.isCreating = false));
+    // Loss conditions
+    model.condition === "PLAY" &&
+      model.health <= 0 &&
+      new Date() - 30e3 >
+        model.scene
+          .slice()
+          .reverse()
+          .find(
+            (obj) =>
+              obj instanceof Celestial && obj.name.toLowerCase() === "played"
+          ).birth &&
+      (model.condition = "LOSS");
     requestAnimationFrame(this.loop.bind(this));
   }
 }
