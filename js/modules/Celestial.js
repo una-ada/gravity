@@ -18,8 +18,9 @@ export default class Celestial {
    * @arg {Vector} [options.velocity] Velocity vector in meters/second.
    * @arg {Vector} [options.acceleration] Acceleration vector in meters/second^2
    * @arg {number} [options.mass=0] Mass in kilograms.
+   * @arg {string} [options.hitBox="CIRCLE"] Shape of the hit box
    * @arg {number} [options.size=0] Width or diameter in meters.
-   * @arg {ImageData} [options.texture] The texture for rendering.
+   * @arg {string} [options.texture] The path of a texture for rendering.
    */
   constructor(options) {
     /*----- Metadata ---------------------------------------------------------*/
@@ -35,13 +36,13 @@ export default class Celestial {
     this.velocity = options.velocity || new Vector(0, 0);
     /** @var {number} mass Mass in kilograms. */
     this.mass = options.mass || 0;
-    /** @TODO Add HitBox class */
-    this.hitBox = null;
+    /** @var {string} hitBox Shape of the hit box */
+    this.hitBox = options.hitBox || "CIRCLE";
 
     /*----- Rendering --------------------------------------------------------*/
     /** @var {number} size Width or diameter in meters. */
     this.size = options.size || 0;
-    /** @var {ImageData} texture The texture for rendering. */
+    /** @var {string} texture The texture for rendering. */
     this.texture = options.texture || null;
   }
 }

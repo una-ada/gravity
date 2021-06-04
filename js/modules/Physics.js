@@ -26,23 +26,36 @@ export default class Physics {
   /*----- Constants ----------------------------------------------------------*/
   /** @const {number} G Gravitational constant. */
   static G = 6.67e-11;
-  /** @const {number} timeScale Time scale (seconds per loop). */
-  static timeScale = 0.5e3;
-  /** @const {number} interval Interval time for physics loop. */
-  static interval = 1e3 / 120;
+  /** @const {number} TIME_SCALE Time scale (seconds per loop). */
+  static TIME_SCALE = 0.5e3;
+  /** @const {number} INTERVAL Interval time for physics loop. */
+  static INTERVAL = 1e3 / 120;
 
-  /*----- Calculation Methods ------------------------------------------------*/
-  /** Update `Celestial#position`s based on `Celestial#velocity` */
-  updatePositions() {
-    this.model.scene.forEach(
-      /** @arg obj {Celestial} */
-      (obj) => obj.position.add(obj.velocity.copy().scale(Physics.timeScale))
-    );
+  /*----- Calculation Functions ----------------------------------------------*/
+  /** @const {Object} INTERSECT_CHECKS Intersect function store. */
+  static INTERSECT_CHECKS = {
+    CIRCLE: {
+      CIRCLE:
+        /**
+         * @arg {Celestial} a
+         * @arg {Celestial} b
+         * @returns {boolean}
+         */
+        (a, b) => a.position.vectorTo(b.position).magnitude > a.size + b.size,
+    },
+  };
+  /**
+   * Check for intersections between two Celestial instances
+   * @arg {Celestial} a
+   * @arg {Celestial} b
+   */
+  checkIntersection(a, b) {
+    return Physics.INTERSECT_CHECKS[a.hitBox][b.hitBox](a, b);
   }
   /**
    * Calculate gravitational acceleration between two Celestial instances
-   * @param {Celestial} m_1 Celestial to apply acceleration to.
-   * @param {Celestial} m_2 Celestial applying the acceleration.
+   * @arg {Celestial} m_1 Celestial to apply acceleration to.
+   * @arg {Celestial} m_2 Celestial applying the acceleration.
    * @returns {Vector} Gravitational acceleration Vector.
    */
   gravitate(m_1, m_2) {
@@ -53,6 +66,15 @@ export default class Physics {
     // Make `between` a unit vector
     between.magnitude = 1;
     return between.scale((Physics.G * m_2.mass) / r ** 2);
+  }
+
+  /*----- Calculation Methods ------------------------------------------------*/
+  /** Update `Celestial#position`s based on `Celestial#velocity` */
+  updatePositions() {
+    this.model.scene.forEach(
+      /** @arg obj {Celestial} */
+      (obj) => obj.position.add(obj.velocity.copy().scale(Physics.TIME_SCALE))
+    );
   }
   /** Update `Celestial#velocity`s based on gravitational acceleration */
   updateVelocities() {
@@ -75,7 +97,7 @@ export default class Physics {
               new Vector(0, 0)
             )
             // Velocity from acceleration
-            .scale(Physics.timeScale)
+            .scale(Physics.TIME_SCALE)
         )
     );
   }
@@ -85,7 +107,7 @@ export default class Physics {
   loop() {
     this._intervalId = window.setInterval(
       this.step.bind(this),
-      Physics.interval
+      Physics.INTERVAL
     );
     console.log(`Physics running on loop ${this._intervalId}`);
   }
