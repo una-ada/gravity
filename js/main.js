@@ -31,6 +31,7 @@ let saturn = new Celestial({
     physical: true,
     mass: 5.683e26,
     size: 3.06e8,
+    texture: "./img/celestial-saturn.svg",
   }),
   titan = new Celestial({
     name: "Titan",

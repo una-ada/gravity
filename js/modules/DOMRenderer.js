@@ -50,7 +50,6 @@ export default class DOMRenderer extends Renderer {
                 `${obj.size.x / this.scale}px`,
                 `${obj.size.y / this.scale}px`,
               ];
-        obj.collisions.length > 0 && (style.backgroundColor = "red");
       }
     );
   }
@@ -65,6 +64,12 @@ export default class DOMRenderer extends Renderer {
       // Clean up the name for adding into a CSS class
       cleanName = obj.name.replace(/\s+/g, "-").toLowerCase();
     element.classList.add(`gravity__${type}_${cleanName}`);
+    obj.texture &&
+      ([
+        element.style.backgroundColor,
+        element.style.borderRadius,
+        element.style.backgroundImage,
+      ] = [`transparent`, `0`, `url(${obj.texture})`]);
     obj.element = element;
     this.container.append(obj.element);
     return element;
