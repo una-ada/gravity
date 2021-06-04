@@ -7,12 +7,11 @@
 /*----- Font -----------------------------------------------------------------*/
 @font-face {
   font-family: "Una Script";
-  src: url("/assets/fonts/UnaScript-Regular.eot");
-  src: url("/assets/fonts/UnaScript-Regular.eot?#iefix")
-      format("embedded-opentype"),
-    url("/assets/fonts/UnaScript-Regular.woff2") format("woff2"),
-    url("/assets/fonts/UnaScript-Regular.woff") format("woff"),
-    url("/assets/fonts/UnaScript-Regular.svg#Una Script Regular") format("svg");
+  src: url("../fonts/UnaScript-Regular.eot");
+  src: url("../fonts/UnaScript-Regular.eot?#iefix") format("embedded-opentype"),
+    url("../fonts/UnaScript-Regular.woff2") format("woff2"),
+    url("../fonts/UnaScript-Regular.woff") format("woff"),
+    url("../fonts/UnaScript-Regular.svg#Una Script Regular") format("svg");
   font-weight: 400;
   font-style: normal;
   font-stretch: normal;
@@ -28,7 +27,7 @@ body {
 }
 html {
   color: #333;
-  font-family: 'Una Script', sans-serif;
+  font-family: "Una Script", sans-serif;
   font-size: 20pt;
 }
 
@@ -55,7 +54,8 @@ gravity > celestial {
 }
 
 /*----- Game Stats -----------------------------------------------------------*/
-div#lives, div#message {
+div#lives,
+div#message {
   position: absolute;
   user-select: none;
   -webkit-user-select: none;

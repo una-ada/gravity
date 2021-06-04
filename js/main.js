@@ -46,7 +46,8 @@ let saturn = new Celestial({
 model.scene.push(saturn);
 model.scene.push(titan);
 model.scene.push(target);
+
+/*---- Start Game ------------------------------------------------------------*/
 view.loop();
 physics.loop();
 game.loop();
-console.log(model);
