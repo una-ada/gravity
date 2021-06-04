@@ -10,7 +10,7 @@ import DOMRenderer from "./modules/DOMRenderer.js";
 import Physics from "./modules/Physics.js";
 import GameData from "./modules/GameData.js";
 import Celestial from "./modules/Celestial.js";
-import { Point, Vector } from "./modules/Utils.js";
+import { Point } from "./modules/Utils.js";
 import Area from "./modules/Area.js";
 
 /*----- Initialize -----------------------------------------------------------*/

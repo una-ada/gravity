@@ -1,15 +1,13 @@
 /**
  * @file    Manages the game controller.
  * @author  Una Ada <una@anarchy.website>
- * @version 2021.06.03
+ * @version 2021.06.04
  */
 
 /*----- Imports --------------------------------------------------------------*/
 import Area from "./Area.js";
 import Celestial from "./Celestial.js";
-import GameData from "./GameData.js";
 import Physics from "./Physics.js";
-import Renderer from "./Renderer.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module Game - Manages the game controller. */

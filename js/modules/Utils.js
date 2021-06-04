@@ -1,7 +1,7 @@
 /**
  * @file    A collection of utility classes.
  * @author  Una Ada <una@anarchy.website>
- * @version 2021.06.03
+ * @version 2021.06.04
  */
 
 /*----- Classes --------------------------------------------------------------*/
@@ -148,15 +148,6 @@ export class Vector extends Point {
    */
   scale(scalar) {
     this.magnitude > 0 && (this.magnitude = this.magnitude * scalar);
-    return this;
-  }
-  /**
-   * Rotate the vector by a specified angle in radians
-   * @arg {number} angle The angle to rotate by.
-   * @returns {Vector} The updated vector
-   */
-  rotate(angle) {
-    this.direction = this.direction + angle;
     return this;
   }
   /**

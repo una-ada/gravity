@@ -40,7 +40,7 @@ export default class Physics {
    * @returns {boolean}
    */
   static pointInRectangle(point, rect) {
-    if(!(point instanceof Point && rect instanceof Area)) return;
+    if (!(point instanceof Point && rect instanceof Area)) return;
     let p1 = rect.position.copy(),
       p2 = p1.copy().add(rect.size);
     return point.x > p1.x && point.x < p2.x && point.y > p1.y && point.y < p2.y;

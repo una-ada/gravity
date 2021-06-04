@@ -4,9 +4,6 @@
  * @version 2021.06.04
  */
 
-/*----- Imports --------------------------------------------------------------*/
-import { Point, Vector } from "./Utils.js";
-
 /*----- Classes --------------------------------------------------------------*/
 /** @module Area Scene area. */
 export default class Area {
@@ -18,7 +15,7 @@ export default class Area {
    * @arg {string} [options.name="Unnamed Area"] Display name.
    * @arg {string} [options.texture] The path of a texture for rendering.
    */
-  constructor(position, size, options){
+  constructor(position, size, options) {
     /*----- Metadata ---------------------------------------------------------*/
     /** @var {string} name Display name. */
     this.name = options.name || "Unnamed Area";
