@@ -5,8 +5,8 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
+import Area from "./Area.js";
 import { Point, Vector } from "./Utils.js";
-import Celestial from "./Celestial.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module GameData Manages the game model. */
@@ -47,5 +47,19 @@ export default class GameData {
     this.isCreating = false;
     /** @var {Celestial} newborn Newest created Celestial.  */
     this.newborn = null;
+  }
+
+  /*----- Setters and Getters ------------------------------------------------*/
+  /** @var {Area} target The level target area. */
+  get target() {
+    return this.scene.find(
+      (obj) => obj instanceof Area && obj.name.toLowercase() === "target"
+    );
+  }
+  /** @var {Area} playArea The level play area. */
+  get playArea() {
+    return this.scene.find(
+      (obj) => obj instanceof Area && obj.name.toLowerCase() === "play area"
+    );
   }
 }

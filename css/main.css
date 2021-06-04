@@ -43,14 +43,14 @@ gravity {
 }
 gravity > viewarea {
   border-radius: 5px;
-  border-style: solid;
-  border-width: 3px;
   position: absolute;
+  z-index: 0;
 }
 gravity > celestial {
   background-color: #333;
   border-radius: 50%;
   position: absolute;
+  z-index: 50;
 }
 
 /*----- Game Stats -----------------------------------------------------------*/
@@ -80,8 +80,8 @@ div#repo {
   z-index: 200;
 }
 span.blue {
-  color: blue;
+  color: rgba(0, 0, 255, 0.7);
 }
 span.red {
-  color: red;
+  color: rgba(255, 0, 0, 0.7);
 }

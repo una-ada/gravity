@@ -72,36 +72,37 @@ export default class Game {
     const model = this.model,
       mouse = this.model.mouse;
     // Handle player input
-    mouse.isDown
-      ? model.isCreating
-        ? mouse.change.magnitude > 18
-          // Set velocity if mouse outside threshold
-          ? (model.newborn.velocity = mouse.change
-              .copy()
-              .scale(Game.SCALE.velocity)
-              .reflectHorizontal()
-              .reflectVertical())
-          // Customize mass if mouse still in threshold
-          : model.customMassAllowed &&
-            (model.newborn.mass *= Game.SCALE.mass)
-        // Create new Celestial on mouse down
-        : model.health > 0 &&
-          (model.isCreating = true) &&
-          (model.newborn = new Celestial({
-            mass: 1.35e23,
-            position: this.view.origin
-              .copy()
-              .subtract(mouse.position)
-              .subtract(this.view.offset)
-              .scale(0 - this.view.scale),
-            size: 0.54e8,
-          })) &&
-          model.scene.push(model.newborn)
-      // Release newborn Celestial on mouse up
-      : model.isCreating &&
-        (model.newborn.physical = true) &&
-        (model.health -= 1) &&
-        (model.isCreating = false);
+    model.condition === "PLAY" &&
+      (mouse.isDown
+        ? model.isCreating
+          ? mouse.change.magnitude > 18
+            ? // Set velocity if mouse outside threshold
+              (model.newborn.velocity = mouse.change
+                .copy()
+                .scale(Game.SCALE.velocity)
+                .reflectHorizontal()
+                .reflectVertical())
+            : // Customize mass if mouse still in threshold
+              model.customMassAllowed && (model.newborn.mass *= Game.SCALE.mass)
+          : // Create new Celestial on mouse down
+            model.health > 0 &&
+            (model.isCreating = true) &&
+            (model.newborn = new Celestial({
+              name: "played",
+              mass: 1.35e23,
+              position: this.view.origin
+                .copy()
+                .subtract(mouse.position)
+                .subtract(this.view.offset)
+                .scale(0 - this.view.scale),
+              size: 0.54e8,
+            })) &&
+            model.scene.push(model.newborn)
+        : // Release newborn Celestial on mouse up
+          model.isCreating &&
+          (model.newborn.physical = true) &&
+          (model.health -= 1) &&
+          (model.isCreating = false));
     requestAnimationFrame(this.loop.bind(this));
   }
 }

@@ -33,7 +33,7 @@ let saturn = new Celestial({
     size: 3.06e8,
     texture: "./img/celestial-saturn.svg",
   }),
-  target = new Area(new Point(1.0e9, -1e8), new Point(0.559e9, 2e8), {
+  target = new Area(new Point(1.0e9, -1e8), new Point(2e8, 2e8), {
     name: "Target",
   });
 model.scene.push(saturn);

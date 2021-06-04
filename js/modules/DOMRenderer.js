@@ -8,6 +8,7 @@
 import GameData from "./GameData.js";
 import Renderer from "./Renderer.js";
 import Celestial from "./Celestial.js";
+import Area from "./Area.js";
 
 /*----- Classes --------------------------------------------------------------*/
 /** @module DOMRenderer Manages the game view (DOM). */
@@ -63,8 +64,8 @@ export default class DOMRenderer extends Renderer {
           <span class="red">red</span> area into the
           <span class="blue">blue</span> area.`
         : model.condition === "WIN"
-          ? `You win! Congratulations!`
-          : `<span class="red">You lost! Oh no!</span>`;
+        ? `You win! Congratulations!`
+        : `<span class="red">You lost! Oh no!</span>`;
   }
   /**
    * Create an Element for a game object and append it to the container.
@@ -74,7 +75,6 @@ export default class DOMRenderer extends Renderer {
   generateElement(obj) {
     const type = obj instanceof Celestial ? "celestial" : "viewarea",
       element = document.createElement(type),
-      // Clean up the name for adding into a CSS class
       cleanName = obj.name.replace(/\s+/g, "-").toLowerCase();
     element.classList.add(`gravity__${type}_${cleanName}`);
     obj.texture &&
@@ -83,6 +83,11 @@ export default class DOMRenderer extends Renderer {
         element.style.borderRadius,
         element.style.backgroundImage,
       ] = [`transparent`, `0`, `url(${obj.texture})`]);
+    obj instanceof Area &&
+      (obj.name.toLowerCase() === "target"
+        ? (element.style.backgroundColor = `rgba(0, 0, 255, 0.7)`)
+        : obj.name.toLowerCase() === "play" &&
+          (element.style.backgroundColor = `rgba(255, 0, 0, 0.7)`));
     obj.element = element;
     this.container.append(obj.element);
     return element;
