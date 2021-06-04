@@ -1,7 +1,7 @@
 /**
  *  Styles for DOM Rendering
  *  by Una Ada <una@anarchy.website>
- *  June 3, 2021
+ *  June 4, 2021
  */
 
 /*---- Override Agent Style --------------------------------------------------*/
@@ -20,6 +20,7 @@ gravity {
 }
 gravity > viewarea {
   background-color: #999;
+  border-radius: 10px;
   position: absolute;
 }
 gravity > celestial {

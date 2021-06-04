@@ -1,7 +1,7 @@
 /**
  * @file    Manages the physics simulation.
  * @author  Una Ada <una@anarchy.website>
- * @version 2021.06.03
+ * @version 2021.06.04
  */
 
 /*----- Imports --------------------------------------------------------------*/
@@ -35,15 +35,14 @@ export default class Physics {
   /*----- Calculation Functions ----------------------------------------------*/
   /**
    * Check if center of circle is within a rectangle
-   * @arg {Area} a
-   * @arg {Celestial} b
+   * @arg {Point} point
+   * @arg {Area} rect
    * @returns {boolean}
    */
-  static circleInRectangle(a, b) {
-    let p1 = a.position.copy(),
-      p2 = p1.copy().add(a.size),
-      c = b.position.copy();
-    return c.x > p1.x && c.x < p2.x && c.y > p1.y && c.y < p2.y;
+  static pointInRectangle(point, rect) {
+    let p1 = rect.position.copy(),
+      p2 = p1.copy().add(rect.size);
+    return point.x > p1.x && point.x < p2.x && point.y > p1.y && point.y < p2.y;
   }
   /** @const {Object} INTERSECT_CHECKS Intersect function store. */
   static INTERSECT_CHECKS = {
@@ -62,10 +61,16 @@ export default class Physics {
          * @arg {Area} b
          * @returns {boolean}
          */
-        (a, b) => Physics.circleInRectangle(b, a),
+        (a, b) => Physics.pointInRectangle(a.position, b),
     },
     RECTANGLE: {
-      CIRCLE: Physics.circleInRectangle,
+      CIRCLE:
+        /**
+         * @arg {Celestial} a
+         * @arg {Area} b
+         * @returns {boolean}
+         */
+        (a, b) => Physics.pointInRectangle(b.position, a),
     },
   };
   /**
