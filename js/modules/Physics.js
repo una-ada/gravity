@@ -41,7 +41,8 @@ export default class Physics {
          * @arg {Celestial} b
          * @returns {boolean}
          */
-        (a, b) => a.position.vectorTo(b.position).magnitude < a.size + b.size,
+        (a, b) =>
+          a.position.vectorTo(b.position).magnitude < (a.size + b.size) / 2,
     },
   };
   /**
@@ -134,8 +135,8 @@ export default class Physics {
   }
   /** Calculate the physics for objects in the scene and apply to model. */
   step() {
+    this.updateCollisions();
     this.updateVelocities();
     this.updatePositions();
-    this.updateCollisions();
   }
 }
