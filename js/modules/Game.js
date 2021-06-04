@@ -5,6 +5,7 @@
  */
 
 /*----- Imports --------------------------------------------------------------*/
+import Area from "./Area.js";
 import Celestial from "./Celestial.js";
 import GameData from "./GameData.js";
 import Physics from "./Physics.js";
@@ -112,15 +113,30 @@ export default class Game {
     // Loss conditions
     model.condition === "PLAY" &&
       model.health <= 0 &&
+      // Last played Celestial older than 30s
       new Date() - 30e3 >
         model.scene
           .slice()
           .reverse()
-          .find(
-            (obj) =>
-              obj instanceof Celestial && obj.name.toLowerCase() === "played"
-          ).birth &&
+          .find((obj) => obj instanceof Celestial && obj.name === "played")
+          .birth &&
       (model.condition = "LOSS");
+    // Win conditions
+    model.condition === "PLAY" &&
+      model.scene.reduce(
+        (acc, obj) =>
+          // Check played Celestial
+          obj instanceof Celestial && obj.name === "played"
+            ? obj.collisions.find(
+                (hit) =>
+                  // Check if hit target
+                  hit.who instanceof Area &&
+                  hit.who.name.toLowerCase() === "target"
+              ) || acc
+            : acc,
+        false
+      ) &&
+      (model.condition = "WIN");
     requestAnimationFrame(this.loop.bind(this));
   }
 }

@@ -64,7 +64,7 @@ export default class DOMRenderer extends Renderer {
           <span class="red">red</span> area into the
           <span class="blue">blue</span> area.`
         : model.condition === "WIN"
-        ? `You win! Congratulations!`
+        ? `<span class="blue">You win! Congrats!</span>`
         : `<span class="red">You lost! Oh no!</span>`;
   }
   /**
